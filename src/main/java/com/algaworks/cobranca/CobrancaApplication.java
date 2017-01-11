@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Cobranca2Application {
+public class CobrancaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Cobranca2Application.class, args);
+		SpringApplication.run(CobrancaApplication.class, args);
 	}
 }
