@@ -5,3 +5,8 @@
 .panel-default {
 	margin: 0 10px;
 }
+
+.alert {
+	margin-right: 10px;
+	margin-left: 10px;
+}
