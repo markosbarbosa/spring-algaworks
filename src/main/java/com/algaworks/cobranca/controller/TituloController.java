@@ -43,6 +43,12 @@ public class TituloController {
 		
 	}
 	
+	@RequestMapping
+	public String pesquisar() {
+		return "PesquisaTitulos";
+	}
+	
+	
 	@ModelAttribute("todosStatusTitulos")
 	public List<StatusTitulo> todosStatusTitulo() {
 	
