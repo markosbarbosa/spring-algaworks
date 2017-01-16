@@ -10,6 +10,8 @@
 
 <section layout:fragment="conteudo">
 
+	<div layout:include="MensagemGeral"></div>
+
 	<div class="panel panel-default">
    		<div class="panel-heading">
    		
@@ -46,6 +48,10 @@
       						<a class="btn btn-link btn-xs" th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}">
       							<span class="glyphicon glyphicon-pencil" />
       						</a>
+      						<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModal"
+      							th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}">
+      							<span class="glyphicon glyphicon-remove" />
+      						</a>
       					</td>
       				</tr>
       				<tr th:if="${#lists.isEmpty(titulos)}">
@@ -54,6 +60,9 @@
       			</tbody>
       		</table>
       	</div>
+      	
+      	<div layout:include="DialogoConfirmacaoExclusao" />
+      	
    </div>
    
 </section>
