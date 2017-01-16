@@ -39,7 +39,7 @@ public class TituloController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public String salvar(@Validated Titulo titulo, Errors errors, RedirectAttributes attributes) {
-
+		
 		if(errors.hasErrors()) {
 			return CADASTRO_VIEW;
 		}
@@ -74,11 +74,12 @@ public class TituloController {
 	
 	@RequestMapping(value = "{codigo}", method = RequestMethod.DELETE)
 	public String excluir(@PathVariable Long codigo, RedirectAttributes attributes) {
+		
 		titulos.delete(codigo);
 		
-		attributes.addAttribute("mensagem", "Título excluído com sucesso!");
+		attributes.addFlashAttribute("mensagem", "Título excluído com sucesso!");
 		
-		return "redirect:/titulos";
+		return "redirect:/titulos/novo";
 	}
 	
 	
