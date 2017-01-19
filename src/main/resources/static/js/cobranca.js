@@ -29,4 +29,32 @@ $(function() {
 		thousands: '.',
 		allowZero: true
 	});
+	
+	$('.js-atualizar-status').on('click', function(event) {
+		
+		event.preventDefault();
+		
+		var botaoReceber = $(event.currentTarget);
+		var urlReceber = botaoReceber.attr('href');
+		
+		var response = $.ajax({
+			url: urlReceber,
+			type: 'PUT'
+		});
+		
+		response.done(function(retorno) {
+		
+			var codigoTitulo = botaoReceber.data('codigo');
+			
+			$('[data-role=' + codigoTitulo + ']').html('<span class="label label-success">' + retorno + '</span>');
+			
+			botaoReceber.hide();
+		});
+		
+		response.fail(function() {
+			alert('Erro ao receber cobrança.')
+		})
+		
+	});
+	
 });

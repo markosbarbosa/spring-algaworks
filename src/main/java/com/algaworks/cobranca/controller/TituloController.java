@@ -3,6 +3,8 @@ package com.algaworks.cobranca.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -91,6 +94,12 @@ public class TituloController {
 		attributes.addFlashAttribute("mensagem", "Título excluído com sucesso!");
 		
 		return "redirect:/titulos/novo";
+	}
+	
+
+	@RequestMapping(value = "/{codigo}/receber", method = RequestMethod.PUT)
+	public @ResponseBody String salvar(@PathVariable Long codigo) {
+		return cadastroTituloService.receber(codigo);
 	}
 	
 	
